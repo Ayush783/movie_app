@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/screens/homepage.dart';
+import 'package:movie_app/screens/dashboard.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
           color: Color(0xffe50914),
         ),
         primaryTextTheme: TextTheme(
-          title: TextStyle(color: Color(0xffe50914)),
+          headline6: TextStyle(color: Color(0xffe50914)),
         ),
       ),
-      home: Homepage(),
+      home: Dashboard(),
     );
   }
 }
