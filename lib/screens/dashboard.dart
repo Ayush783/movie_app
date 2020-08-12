@@ -24,15 +24,9 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
       appBar: AppBar(
         title: Text('Movie App'),
-        actions: <Widget>[
-          Icon(Icons.search),
-          Padding(
-            padding: EdgeInsets.only(right: 20),
-          )
-        ],
+        centerTitle: true,
       ),
       bottomNavigationBar: BottomNavyBar(
         backgroundColor: Color(0xff221f1f),
