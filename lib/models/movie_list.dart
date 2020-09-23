@@ -1,7 +1,7 @@
 import 'movie.dart';
 
 class MovieResponse {
-  final List<Movie> movies;
+  List<Movie> movies;
   final String error;
 
   MovieResponse(this.movies, this.error);

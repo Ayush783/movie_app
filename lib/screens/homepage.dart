@@ -1,7 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
-import '../const.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,17 +11,28 @@ class _HomePageState extends State<HomePage> {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          CarouselSlider(items: [
-            Container(
-              color: Colors.red,
-            ),
-            Container(
-              color: Colors.white,
-            ),
-          ], options: carouselOptions)
-        ],
+        children: <Widget>[],
       ),
     );
   }
 }
+//  Container(
+//                   height: 220,
+//                   child: Center(
+//                     child: SpinKitCircle(
+//                       color: Colors.red,
+//                       size: 40,
+//                     ),
+//                   ))
+//               : CarouselSlider.builder(
+//                   itemCount: 10,
+//                   itemBuilder: (context, int i) {
+//                     return Container(
+//                       child: Image.network(
+//                         'https://i1.wp.com/image.tmdb.org/t/p/w342/${nowplayingMoviesList[i].backPoster}',
+//                         fit: BoxFit.fill,
+//                         width: double.infinity,
+//                       ),
+//                     );
+//                   },
+//                   options: carouselOptions)

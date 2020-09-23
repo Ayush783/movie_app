@@ -10,7 +10,7 @@ const Widget padding = Padding(
 );
 
 final carouselOptions = CarouselOptions(
-  height: 300,
+  height: 220,
   viewportFraction: 1,
   autoPlay: true,
   autoPlayAnimationDuration: Duration(milliseconds: 500),
