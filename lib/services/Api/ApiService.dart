@@ -7,7 +7,7 @@ import 'package:movie_app/services/Api/api_key.dart';
 class ApiService {
   String baseUrl = 'https://api.themoviedb.org/3';
 
-  Future<MovieResponse> getNowPlayingMovies() async {
+  Future<MovieResponse> getTrendingMovies() async {
     try {
       http.Response response =
           await http.get('$baseUrl/movie/now_playing?api_key=$apiKey&page=1');
@@ -17,7 +17,7 @@ class ApiService {
     }
   }
 
-  Future<MovieResponse> getMovies() async {
+  Future<MovieResponse> getPopularMovies() async {
     try {
       http.Response response =
           await http.get('$baseUrl/movie/top_rated?api_key=$apiKey&page=1');
