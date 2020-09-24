@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/const.dart';
 import 'package:movie_app/screens/movies_screen.dart';
 import 'package:movie_app/screens/tv_screen.dart';
 import 'package:movie_app/screens/watchlist_screen.dart';
@@ -25,7 +26,10 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movie App'),
+        title: Text(
+          'Movie App',
+          style: primary,
+        ),
         centerTitle: true,
       ),
       bottomNavigationBar: BottomNavyBar(
@@ -33,22 +37,34 @@ class _DashboardState extends State<Dashboard> {
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
               assetName: 'icons/home.svg',
-              title: Text('Home'),
+              title: Text(
+                'Home',
+                style: primary.copyWith(fontSize: 12),
+              ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
           BottomNavyBarItem(
               assetName: 'icons/movies.svg',
-              title: Text('Movies'),
+              title: Text(
+                'Movies',
+                style: primary.copyWith(fontSize: 12),
+              ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
           BottomNavyBarItem(
               assetName: 'icons/tv.svg',
-              title: Text('TV Shows'),
+              title: Text(
+                'TV Shows',
+                style: primary.copyWith(fontSize: 12),
+              ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
           BottomNavyBarItem(
               assetName: 'icons/fav.svg',
-              title: Text('Watchlist'),
+              title: Text(
+                'Watchlist',
+                style: primary.copyWith(fontSize: 12),
+              ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
         ],

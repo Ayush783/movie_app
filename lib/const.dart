@@ -1,10 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 
-const TextStyle ktextstyle = TextStyle(
-  color: Color(0xffe50914),
-  fontSize: 20,
-);
+const TextStyle primary = TextStyle(
+    color: Color(0xffdb0000),
+    fontSize: 18,
+    fontFamily: 'Sen',
+    fontWeight: FontWeight.bold);
 const Widget padding = Padding(
   padding: EdgeInsets.only(top: 10),
 );
