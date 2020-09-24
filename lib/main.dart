@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Movie App',
+      title: 'Movie Exploring App',
       theme: ThemeData(
         primaryColor: Colors.black,
         fontFamily: 'OS',

@@ -27,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Movie App',
+          'Movie Mania',
           style: primary,
         ),
         centerTitle: true,
