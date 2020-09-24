@@ -1,18 +1,18 @@
 import 'package:movie_app/models/person.dart';
 
-class MovieResponse {
+class PersonResponse {
   List<Person> list;
   final String error;
 
-  MovieResponse(this.list, this.error);
+  PersonResponse(this.list, this.error);
 
-  MovieResponse.fromJson(Map<String, dynamic> json)
+  PersonResponse.fromJson(Map<String, dynamic> json)
       : list = (json["results"] as List)
             .map((i) => new Person.fromJson(i))
             .toList(),
         error = "";
 
-  MovieResponse.withError(String errorValue)
+  PersonResponse.withError(String errorValue)
       : list = List(),
         error = errorValue;
 }
