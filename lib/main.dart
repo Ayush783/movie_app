@@ -10,9 +10,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Movie App',
       theme: ThemeData(
-        primaryColor: Color(0xff221f1f),
+        primaryColor: Colors.black,
         fontFamily: 'OS',
-        scaffoldBackgroundColor: Colors.grey[900],
+        scaffoldBackgroundColor: Colors.black,
         primaryIconTheme: IconThemeData(
           color: Color(0xffe50914),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/const.dart';
 import 'package:movie_app/widgets/trending_movies.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,6 +13,7 @@ class _HomePageState extends State<HomePage> {
     return ListView(
       children: [
         TrendingMovies(),
+        padding,
       ],
     );
   }

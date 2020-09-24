@@ -33,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
         centerTitle: true,
       ),
       bottomNavigationBar: BottomNavyBar(
-        backgroundColor: Color(0xff221f1f),
+        backgroundColor: Colors.black,
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
               assetName: 'icons/home.svg',
