@@ -18,7 +18,7 @@ class _TrendingMoviesState extends State<TrendingMovies> {
   @override
   void initState() {
     super.initState();
-    bloc.add(GetTrendingMovies());
+    bloc.add(GetTrendingAll());
   }
 
   @override

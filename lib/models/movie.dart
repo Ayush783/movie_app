@@ -13,7 +13,7 @@ class Movie {
   Movie.fromJson(Map<String, dynamic> json)
       : id = json["id"],
         popularity = json["popularity"],
-        title = json["title"],
+        title = json["title"] ?? json["name"],
         backPoster = json["backdrop_path"],
         poster = json["poster_path"],
         overview = json["overview"],

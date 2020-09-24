@@ -30,5 +30,11 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       final MovieResponse response = await api.getTrendingMovies();
       yield MoviesLoaded(response);
     }
+    //event to all trending media types
+    if (event is GetTrendingAll) {
+      yield MoviesLoading();
+      final MovieResponse response = await api.getTrendingAll();
+      yield MoviesLoaded(response);
+    }
   }
 }

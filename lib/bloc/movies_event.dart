@@ -7,6 +7,8 @@ abstract class MoviesEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class GetTrendingAll extends MoviesEvent {}
+
 class GetTrendingMovies extends MoviesEvent {}
 
 class GetPopularMovies extends MoviesEvent {}
