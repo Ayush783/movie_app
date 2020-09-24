@@ -5,22 +5,18 @@ import 'package:movie_app/bloc/person_bloc/person_bloc.dart';
 
 import '../const.dart';
 
-class BuildTopRatedActors extends StatefulWidget {
-  const BuildTopRatedActors({
-    Key key,
-  }) : super(key: key);
-
+class BuildTopRatedActress extends StatefulWidget {
   @override
-  _BuildTopRatedActorsState createState() => _BuildTopRatedActorsState();
+  _BuildTopRatedActressState createState() => _BuildTopRatedActressState();
 }
 
-class _BuildTopRatedActorsState extends State<BuildTopRatedActors> {
+class _BuildTopRatedActressState extends State<BuildTopRatedActress> {
   final bloc = PersonBloc();
 
   @override
   void initState() {
     super.initState();
-    bloc.add(GetPopularPersonMale());
+    bloc.add(GetPopularPersonFemale());
   }
 
   @override

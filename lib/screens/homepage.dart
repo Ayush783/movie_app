@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/const.dart';
 import 'package:movie_app/widgets/heading.dart';
 import 'package:movie_app/widgets/top_rated_actors.dart';
+import 'package:movie_app/widgets/top_rated_actress.dart';
 import 'package:movie_app/widgets/trending_movies.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +20,11 @@ class _HomePageState extends State<HomePage> {
         Heading(
           heading: 'Top-Rated Male Actors',
         ),
-        BuildTopRatedMaleActorWidget()
+        BuildTopRatedActors(),
+        Heading(
+          heading: 'Top-Rated Female Actors',
+        ),
+        BuildTopRatedActress()
       ],
     );
   }
