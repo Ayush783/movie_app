@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:lottie/lottie.dart';
 import 'package:movie_app/bloc/movies_bloc.dart';
 
 import '../const.dart';
@@ -36,10 +36,8 @@ class _TrendingMoviesState extends State<TrendingMovies> {
           return Container(
               height: 220,
               child: Center(
-                child: SpinKitCircle(
-                  color: Colors.red,
-                  size: 40,
-                ),
+                child: Lottie.asset('animations/loading.json',
+                    height: 150, width: 150),
               ));
         else if (state is MoviesLoaded)
           return CarouselSlider.builder(
@@ -59,7 +57,7 @@ class _TrendingMoviesState extends State<TrendingMovies> {
                     blendMode: BlendMode.dstIn,
                     child: Image.network(
                       'https://i1.wp.com/image.tmdb.org/t/p/w780/${state.response.movies[i].backPoster}',
-                      height: 320,
+                      height: 220,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -76,9 +74,17 @@ class _TrendingMoviesState extends State<TrendingMovies> {
             },
             options: carouselOptions,
           );
-        else {
-          return Center(child: Text(''));
-        }
+        else
+          return Container(
+            height: 220,
+            width: double.infinity,
+            child: Center(
+                child: Image.asset(
+              'images/film.png',
+              height: 40,
+              width: 40,
+            )),
+          );
       },
     );
   }
