@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movie_app/bloc/movie_bloc/movies_bloc.dart';
+import 'package:movie_app/screens/movie_detail_screen.dart';
 
 import '../const.dart';
 
@@ -45,20 +46,31 @@ class _TrendingMoviesState extends State<TrendingMovies> {
             itemBuilder: (context, int i) {
               return Stack(
                 children: [
-                  ShaderMask(
-                    shaderCallback: (rect) {
-                      return LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Colors.black, Colors.transparent],
-                      ).createShader(
-                          Rect.fromLTRB(0, 0, rect.width, rect.height));
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MovieDetailScreen(
+                              movie: state.response.movies[i],
+                            ),
+                          ));
                     },
-                    blendMode: BlendMode.dstIn,
-                    child: Image.network(
-                      'https://i1.wp.com/image.tmdb.org/t/p/w780/${state.response.movies[i].backPoster}',
-                      height: 220,
-                      fit: BoxFit.fill,
+                    child: ShaderMask(
+                      shaderCallback: (rect) {
+                        return LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.black, Colors.transparent],
+                        ).createShader(
+                            Rect.fromLTRB(0, 0, rect.width, rect.height));
+                      },
+                      blendMode: BlendMode.dstIn,
+                      child: Image.network(
+                        'https://i1.wp.com/image.tmdb.org/t/p/w780/${state.response.movies[i].backPoster}',
+                        height: 220,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   Positioned(

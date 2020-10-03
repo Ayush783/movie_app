@@ -20,7 +20,12 @@ class _DashboardState extends State<Dashboard> {
     });
   }
 
-  List screens = [HomePage(), MoviesScreen(), TVScreen(), WatchlistScreen()];
+  List<Widget> screens = [
+    HomePage(),
+    MoviesScreen(),
+    TVScreen(),
+    WatchlistScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
