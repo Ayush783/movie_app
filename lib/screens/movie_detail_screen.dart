@@ -97,7 +97,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             child: Row(
               children: [
                 Container(
-                  height: size.height * 0.26627,
+                  height: size.height * 0.30627,
                   width: size.width * 0.36111,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
