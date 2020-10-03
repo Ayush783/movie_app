@@ -11,7 +11,7 @@ class MovieDetail {
         homepageUrl = json["homepage"],
         date = json["release_date"],
         runtime = json["runtime"],
-        videoUrl = 'https://www.youtube.com/watch?v=${json["key"]}',
+        videoUrl = json["key"],
         tagline = json["tagline"],
         error = "";
 

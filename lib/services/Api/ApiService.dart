@@ -99,7 +99,11 @@ class ApiService {
       map["release_date"] = details["release_date"];
       map["runtime"] = details["runtime"];
       map["tagline"] = details["tagline"];
-      map["key"] = videos[0]["key"];
+      if (videos.isNotEmpty)
+        map["key"] = videos[0]["key"];
+      else
+        map["key"] = '';
+      print(map);
       return MovieDetail.fromJson(map);
     } catch (error) {
       print(error);

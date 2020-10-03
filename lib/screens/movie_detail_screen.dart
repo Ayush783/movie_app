@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movie_app/bloc/movie_detail_bloc/moviedetail_bloc.dart';
 import 'package:movie_app/models/movie.dart';
+import 'package:movie_app/screens/video_player_screen.dart';
 
 import '../const.dart';
 
@@ -47,21 +48,30 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         height: 150, width: 150),
                   ));
             else if (state is MoviedetailLoaded)
-              return buildMovieDetails(state);
+              return buildMovieDetails(state, context);
             else
               return Text('');
           },
         ));
   }
 
-  SingleChildScrollView buildMovieDetails(MoviedetailLoaded state) {
+  SingleChildScrollView buildMovieDetails(
+      MoviedetailLoaded state, BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        VideoPlayerScreen(videoUrl: state.detail.videoUrl),
+                  ));
+            },
             child: Container(
-              height: 220,
+              height: size.height * 0.32544,
               width: double.maxFinite,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -72,11 +82,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               ),
               child: Center(
                 child: CircleAvatar(
-                  radius: 30,
+                  radius: size.width * 0.08333,
                   child: SvgPicture.asset(
                     'icons/play.svg',
-                    height: 55,
-                    width: 55,
+                    height: size.height * 0.0813,
+                    width: size.width * 0.152777,
                   ),
                 ),
               ),
@@ -87,8 +97,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             child: Row(
               children: [
                 Container(
-                  height: 180,
-                  width: 130,
+                  height: size.height * 0.26627,
+                  width: size.width * 0.36111,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -100,8 +110,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                 ),
                 Padding(padding: EdgeInsets.only(right: 10)),
                 Container(
-                    width: 180,
-                    height: 180,
+                    width: size.width * 0.5,
+                    height: size.height * 0.26627,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
