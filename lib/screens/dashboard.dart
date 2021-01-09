@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/const.dart';
-import 'package:movie_app/screens/movies_screen.dart';
-import 'package:movie_app/screens/tv_screen.dart';
-import 'package:movie_app/screens/watchlist_screen.dart';
 import 'package:movie_app/widgets/bottom_nav_bar.dart';
-
-import 'homepage.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -20,12 +14,7 @@ class _DashboardState extends State<Dashboard> {
     });
   }
 
-  List<Widget> screens = [
-    HomePage(),
-    MoviesScreen(),
-    TVScreen(),
-    WatchlistScreen()
-  ];
+  List<Widget> screens = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +22,6 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         title: Text(
           'Movie Mania',
-          style: primary,
         ),
         centerTitle: true,
       ),
@@ -44,7 +32,6 @@ class _DashboardState extends State<Dashboard> {
               assetName: 'icons/home.svg',
               title: Text(
                 'Home',
-                style: primary.copyWith(fontSize: 12),
               ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
@@ -52,7 +39,6 @@ class _DashboardState extends State<Dashboard> {
               assetName: 'icons/movies.svg',
               title: Text(
                 'Movies',
-                style: primary.copyWith(fontSize: 12),
               ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
@@ -60,7 +46,6 @@ class _DashboardState extends State<Dashboard> {
               assetName: 'icons/tv.svg',
               title: Text(
                 'TV Shows',
-                style: primary.copyWith(fontSize: 12),
               ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
@@ -68,7 +53,6 @@ class _DashboardState extends State<Dashboard> {
               assetName: 'icons/fav.svg',
               title: Text(
                 'Watchlist',
-                style: primary.copyWith(fontSize: 12),
               ),
               activeColor: Color(0xffe50914),
               inactiveColor: Color(0xfff1f1f1)),
