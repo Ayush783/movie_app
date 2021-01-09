@@ -35,6 +35,7 @@ class BottomNavyBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final bgColor = (backgroundColor == null)
         ? Theme.of(context).bottomAppBarColor
         : backgroundColor;
@@ -44,14 +45,15 @@ class BottomNavyBar extends StatelessWidget {
           if (showElevation)
             const BoxShadow(
               color: Colors.black,
-              blurRadius: 8,
+              blurRadius: 4,
             )
         ]),
         child: SafeArea(
             child: Container(
                 width: double.infinity,
-                height: 56,
-                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                height: size.height / 9,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
                 child: Row(
                   mainAxisAlignment: mainAxisAlignment,
                   children: items.map((item) {
@@ -97,42 +99,45 @@ class _ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return AnimatedContainer(
-        width: isSelected ? 92 : 50,
+        width: size.width / 4.5,
         height: double.maxFinite,
         duration: animationDuration,
         padding: EdgeInsets.only(left: 12),
         color: backgroundColor,
-        child: ListView(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: SvgPicture.asset(item.assetName,
-                          height: 20,
-                          width: 20,
-                          color: isSelected
-                              ? item.activeColor
-                              : item.inactiveColor),
-                    ),
-                    isSelected
-                        ? DefaultTextStyle.merge(
-                            style: TextStyle(
-                                color: item.activeColor,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12,
-                                fontFamily: 'OS'),
-                            child: item.title,
-                          )
-                        : SizedBox.shrink()
-                  ])
-            ]));
+        child: Center(
+          child: ListView(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 2),
+                        child: SvgPicture.asset(item.assetName,
+                            height: 24,
+                            width: 24,
+                            color: isSelected
+                                ? item.activeColor
+                                : item.inactiveColor),
+                      ),
+                      isSelected
+                          ? DefaultTextStyle.merge(
+                              style: TextStyle(
+                                  color: item.activeColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                  fontFamily: 'BN'),
+                              child: item.title,
+                            )
+                          : SizedBox.shrink()
+                    ])
+              ]),
+        ));
   }
 }
 
