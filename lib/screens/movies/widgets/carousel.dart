@@ -85,6 +85,7 @@ class Carousel extends StatelessWidget {
                   child: PhysicalModel(
                     elevation: 20,
                     color: Colors.transparent,
+                    shadowColor: Colors.transparent,
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -116,6 +117,7 @@ class Carousel extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: PhysicalModel(
                     elevation: 20,
+                    shadowColor: Colors.transparent,
                     color: Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

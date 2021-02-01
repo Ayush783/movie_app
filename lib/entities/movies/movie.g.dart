@@ -14,6 +14,7 @@ _$_Movie _$_$_MovieFromJson(Map<String, dynamic> json) {
     overview: json['overview'] as String,
     poster_path: json['poster_path'] as String,
     release_date: json['release_date'] as String,
+    vote_average: (json['vote_average'] as num)?.toDouble(),
   );
 }
 
@@ -24,4 +25,5 @@ Map<String, dynamic> _$_$_MovieToJson(_$_Movie instance) => <String, dynamic>{
       'overview': instance.overview,
       'poster_path': instance.poster_path,
       'release_date': instance.release_date,
+      'vote_average': instance.vote_average,
     };
