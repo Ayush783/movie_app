@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/screens/movies/widgets/carousel.dart';
+import 'package:movie_app/screens/movies/widgets/upcoming_movies_section.dart';
 
 import 'widgets/most_popular_movies_section.dart';
 
@@ -13,6 +14,8 @@ class MovieScreen extends StatelessWidget {
           Carousel(),
           //most popular movies section
           MostPopularMovies(),
+          //upcoming movies section
+          UpcomingMovies(),
         ],
       ),
     );

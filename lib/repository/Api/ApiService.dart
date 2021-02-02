@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:devicelocale/devicelocale.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:movie_app/entities/movies/movie.dart';
@@ -13,14 +14,18 @@ import 'package:movie_app/repository/Api/api_constants.dart';
 class TMDBApi implements TMDBApiFacade {
   @override
   Future<Either<MovieFailure, List<Movie>>> getNowPlayingMovies() async {
+    final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/now_playing?api_key=$apiKey',
+      '$baseUrl$movieUrls/now_playing?api_key=$apiKey&region=${locale.countryCode}',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
-      final List<Movie> movies =
-          List.from(results.map((value) => Movie.fromJson(value)));
+      final List<Movie> movies = List.from(results.map((value) {
+        if (value['backdrop_path'] == null)
+          value['backdrop_path'] = value['poster_path'];
+        return Movie.fromJson(value);
+      }));
       return right(movies);
     } else {
       return left(const MovieFailure.unexpected());
@@ -34,14 +39,18 @@ class TMDBApi implements TMDBApiFacade {
 
   @override
   Future<Either<MovieFailure, List<Movie>>> getPopularMovies() async {
+    final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/popular?api_key=$apiKey',
+      '$baseUrl$movieUrls/popular?api_key=$apiKey&region=${locale.countryCode}',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
-      final List<Movie> movies =
-          List.from(results.map((value) => Movie.fromJson(value)));
+      final List<Movie> movies = List.from(results.map((value) {
+        if (value['backdrop_path'] == null)
+          value['backdrop_path'] = value['poster_path'];
+        return Movie.fromJson(value);
+      }));
       return right(movies);
     } else {
       return left(const MovieFailure.unexpected());
@@ -55,14 +64,18 @@ class TMDBApi implements TMDBApiFacade {
 
   @override
   Future<Either<MovieFailure, List<Movie>>> getTopRatedMovies() async {
+    final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/top_rated?api_key=$apiKey',
+      '$baseUrl$movieUrls/top_rated?api_key=$apiKey&region=${locale.countryCode}',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
-      final List<Movie> movies =
-          List.from(results.map((value) => Movie.fromJson(value)));
+      final List<Movie> movies = List.from(results.map((value) {
+        if (value['backdrop_path'] == null)
+          value['backdrop_path'] = value['poster_path'];
+        return Movie.fromJson(value);
+      }));
       return right(movies);
     } else {
       return left(const MovieFailure.unexpected());
@@ -76,14 +89,18 @@ class TMDBApi implements TMDBApiFacade {
 
   @override
   Future<Either<MovieFailure, List<Movie>>> getUpcomingMovies() async {
+    final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/upcoming?api_key=$apiKey',
+      '$baseUrl$movieUrls/upcoming?api_key=$apiKey&region=${locale.countryCode}',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
-      final List<Movie> movies =
-          List.from(results.map((value) => Movie.fromJson(value)));
+      final List<Movie> movies = List.from(results.map((value) {
+        if (value['backdrop_path'] == null)
+          value['backdrop_path'] = value['poster_path'];
+        return Movie.fromJson(value);
+      }));
       return right(movies);
     } else {
       return left(const MovieFailure.unexpected());
