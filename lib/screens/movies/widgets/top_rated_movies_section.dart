@@ -1,30 +1,30 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/bloc/movie/upcoming_movies_bloc/upcomingmovies_bloc.dart';
+import 'package:movie_app/bloc/movie/top_rated_movies_bloc/topratedmovies_bloc.dart';
 import 'package:movie_app/entities/movies/movie.dart';
 
-class UpcomingMovies extends StatelessWidget {
+class TopRatedMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final bloc = BlocProvider.of<UpcomingmoviesBloc>(context);
-    return BlocBuilder<UpcomingmoviesBloc, UpcomingmoviesState>(
+    final bloc = BlocProvider.of<TopratedmoviesBloc>(context);
+    return BlocBuilder<TopratedmoviesBloc, TopratedmoviesState>(
       cubit: bloc,
       builder: (context, state) {
         return state.map(
             initial: (_) => Container(),
-            loadingUpcomingMovies: (_) => Container(
+            loadingTopRatedMovies: (_) => Container(
                 height: size.height / 3,
                 child: Center(
                     child: CircularProgressIndicator(
                   backgroundColor: Color(0xffff0000),
                 ))),
-            loadedUpcomingMovies: (state) {
+            loadedTopRatedMovies: (state) {
               final List<Movie> movies = state.movies;
               return _buildBody(size, movies);
             },
-            upcomingMoviesError: (state) {
+            topRatedMoviesError: (state) {
               return Text('Error');
             });
       },
@@ -47,7 +47,7 @@ class UpcomingMovies extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'in theatres soon',
+                'Top Rated Movies',
               ),
               IconButton(
                 icon: Icon(Icons.arrow_forward_ios),
