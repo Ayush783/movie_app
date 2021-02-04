@@ -40,9 +40,9 @@ class DashboardBody extends StatelessWidget {
                 activeColor: Color(0xffff0000),
                 inactiveColor: Color(0xfff1f1f1)),
             BottomNavyBarItem(
-                assetName: 'assets/icons/Celebs.svg',
+                assetName: 'assets/icons/search.svg',
                 title: Text(
-                  'Celebs',
+                  'Search',
                 ),
                 activeColor: Color(0xffff0000),
                 inactiveColor: Color(0xfff1f1f1)),

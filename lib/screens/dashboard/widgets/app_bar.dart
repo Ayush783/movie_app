@@ -18,11 +18,5 @@ AppBar appbarWidget(BuildContext context) {
         ),
       ),
     ),
-    actions: [
-      InkWell(onTap: () {}, child: SvgPicture.asset('assets/icons/search.svg')),
-      SizedBox(
-        width: 20,
-      )
-    ],
   );
 }
