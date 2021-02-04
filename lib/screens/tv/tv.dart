@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/screens/tv/widgets/airing_now_tv_shows_section.dart';
 import 'package:movie_app/screens/tv/widgets/carousel.dart';
 import 'package:movie_app/screens/tv/widgets/popular_tv_shows_section.dart';
+import 'package:movie_app/screens/tv/widgets/top_rated_tv_shows_section.dart';
 
 class TVScreen extends StatelessWidget {
   @override
@@ -15,8 +16,8 @@ class TVScreen extends StatelessWidget {
           AiringNowTVShows(),
           //most popular tv shows section
           PopularTVShows(),
-          //top rated movies section
-          // TopRatedTVShows(),
+          // top rated TV shows section
+          TopRatedTVShows(),
         ],
       ),
     );
