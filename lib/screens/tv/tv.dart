@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/screens/tv/widgets/airing_now_tv_shows_section.dart';
 import 'package:movie_app/screens/tv/widgets/carousel.dart';
 
 class TVScreen extends StatelessWidget {
@@ -9,8 +10,8 @@ class TVScreen extends StatelessWidget {
         children: [
           //custom carousel widget
           Carousel(),
-          //upcoming movies section
-          // AiringNowTVShows(),
+          // airing now tv shows section
+          AiringNowTVShows(),
           //most popular movies section
           // PopularTVShows(),
           //top rated movies section
