@@ -102,7 +102,7 @@ class MostPopularMovies extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(left: 8.0, top: 4),
                           child: Text(
-                            '${movies[index].vote_average} / 10',
+                            '${movies[index].vote_average == 0 ? '-' : movies[index].vote_average} / 10',
                             overflow: TextOverflow.ellipsis,
                             style: Theme.of(context)
                                 .textTheme
