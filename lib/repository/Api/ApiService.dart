@@ -21,6 +21,7 @@ class TMDBApi implements TMDBApiFacade {
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
+      results.removeWhere((v) => v['poster_path'] == null);
       final List<Movie> movies = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];
@@ -46,6 +47,7 @@ class TMDBApi implements TMDBApiFacade {
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
+      results.removeWhere((v) => v['poster_path'] == null);
       final List<Movie> movies = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];
@@ -71,6 +73,7 @@ class TMDBApi implements TMDBApiFacade {
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
+      results.removeWhere((v) => v['poster_path'] == null);
       final List<Movie> movies = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];
@@ -96,6 +99,7 @@ class TMDBApi implements TMDBApiFacade {
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
+      results.removeWhere((v) => v['poster_path'] == null);
       final List<Movie> movies = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];

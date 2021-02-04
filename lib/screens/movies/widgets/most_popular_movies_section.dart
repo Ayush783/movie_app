@@ -39,7 +39,7 @@ class MostPopularMovies extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: size.height / 40),
       padding: EdgeInsets.all(10),
-      height: size.height / 2.4,
+      height: size.height / 2.25,
       color: Color(0xff363636),
       child: Column(
         children: [
@@ -47,7 +47,7 @@ class MostPopularMovies extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'MOST POPULAR MOvIES',
+                'MOST POPULAR MOVIES',
               ),
               IconButton(
                 icon: Icon(Icons.arrow_forward_ios),
@@ -67,7 +67,6 @@ class MostPopularMovies extends StatelessWidget {
                   color: Colors.transparent,
                   child: Container(
                     margin: EdgeInsets.only(right: 20),
-                    height: size.height / 3.8,
                     width: size.width / 3,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),

@@ -39,7 +39,7 @@ class UpcomingMovies extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: size.height / 40),
       padding: EdgeInsets.all(10),
-      height: size.height / 2.4,
+      height: size.height / 2.25,
       color: Color(0xff363636),
       child: Column(
         children: [
