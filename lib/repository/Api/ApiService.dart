@@ -35,7 +35,7 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<Movie>>> getOnTheAirTV() async {
+  Future<Either<TVFailure, List<TV>>> getOnTheAirTV() async {
     final response = await http.get(
       '$baseUrl$tvUrls/on_the_air?api_key=$apiKey',
     );
@@ -43,12 +43,12 @@ class TMDBApi implements TMDBApiFacade {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
       results.removeWhere((v) => v['poster_path'] == null);
-      final List<Movie> movies = List.from(results.map((value) {
+      final List<TV> shows = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];
         return TV.fromJson(value);
       }));
-      return right(movies);
+      return right(shows);
     } else {
       return left(const TVFailure.unexpected());
     }
@@ -76,7 +76,7 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<Movie>>> getPopularTV() async {
+  Future<Either<TVFailure, List<TV>>> getPopularTV() async {
     final response = await http.get(
       '$baseUrl$tvUrls/popular?api_key=$apiKey',
     );
@@ -84,12 +84,12 @@ class TMDBApi implements TMDBApiFacade {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
       results.removeWhere((v) => v['poster_path'] == null);
-      final List<Movie> movies = List.from(results.map((value) {
+      final List<TV> shows = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];
         return TV.fromJson(value);
       }));
-      return right(movies);
+      return right(shows);
     } else {
       return left(const TVFailure.unexpected());
     }
@@ -117,7 +117,7 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<Movie>>> getTopRatedTV() async {
+  Future<Either<TVFailure, List<TV>>> getTopRatedTV() async {
     final response = await http.get(
       '$baseUrl$tvUrls/top_rated?api_key=$apiKey',
     );
@@ -125,12 +125,12 @@ class TMDBApi implements TMDBApiFacade {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
       results.removeWhere((v) => v['poster_path'] == null);
-      final List<Movie> movies = List.from(results.map((value) {
+      final List<TV> shows = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];
         return TV.fromJson(value);
       }));
-      return right(movies);
+      return right(shows);
     } else {
       return left(const TVFailure.unexpected());
     }
@@ -158,7 +158,7 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<Movie>>> getAiringTodayTV() async {
+  Future<Either<TVFailure, List<TV>>> getAiringTodayTV() async {
     final response = await http.get(
       '$baseUrl$tvUrls/airing_today?api_key=$apiKey',
     );
@@ -166,12 +166,12 @@ class TMDBApi implements TMDBApiFacade {
       final List<Map<String, dynamic>> results =
           List.from(jsonDecode(response.body)['results']);
       results.removeWhere((v) => v['poster_path'] == null);
-      final List<Movie> movies = List.from(results.map((value) {
+      final List<TV> shows = List.from(results.map((value) {
         if (value['backdrop_path'] == null)
           value['backdrop_path'] = value['poster_path'];
         return TV.fromJson(value);
       }));
-      return right(movies);
+      return right(shows);
     } else {
       return left(const TVFailure.unexpected());
     }
