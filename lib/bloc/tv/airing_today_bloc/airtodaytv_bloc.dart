@@ -22,8 +22,8 @@ class AirtodaytvBloc extends Bloc<AirtodaytvEvent, AirtodaytvState> {
     AirtodaytvEvent event,
   ) async* {
     yield AirtodaytvState.loading();
-    final moviesOrFailure = await _tmdbApiFacade.getOnTheAirTV();
-    yield moviesOrFailure.fold((f) => AirtodaytvState.error(failure: f),
+    final tvOrFailure = await _tmdbApiFacade.getAiringTodayTV();
+    yield tvOrFailure.fold((f) => AirtodaytvState.error(failure: f),
         (r) => AirtodaytvState.loaded(shows: r));
   }
 }

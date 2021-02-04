@@ -12,4 +12,4 @@ const String allTVGenres = 'genre/tv/list';
 
 const String movieUrls = 'movie';
 
-const String tvUrls = 'tv/';
+const String tvUrls = 'tv';

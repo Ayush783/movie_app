@@ -22,8 +22,8 @@ class PopulartvBloc extends Bloc<PopulartvEvent, PopulartvState> {
     PopulartvEvent event,
   ) async* {
     yield PopulartvState.loading();
-    final moviesOrFailure = await _tmdbApiFacade.getOnTheAirTV();
-    yield moviesOrFailure.fold((f) => PopulartvState.error(failure: f),
+    final tvOrFailure = await _tmdbApiFacade.getPopularTV();
+    yield tvOrFailure.fold((f) => PopulartvState.error(failure: f),
         (r) => PopulartvState.loaded(shows: r));
   }
 }
