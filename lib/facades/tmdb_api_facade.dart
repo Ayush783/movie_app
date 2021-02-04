@@ -12,10 +12,12 @@ abstract class TMDBApiFacade {
   Future<Either<MovieFailure, List<Movie>>> getUpcomingMovies();
   //get a lsit of TopRated movies
   Future<Either<MovieFailure, List<Movie>>> getTopRatedMovies();
-  //get a lsit of on the air movies
+  //get a lsit of on the air TV
   Future<Either<TVFailure, List<Movie>>> getOnTheAirTV();
-  //get a lsit of Popular movies
+  //get a lsit airing today TV
+  Future<Either<TVFailure, List<Movie>>> getAiringTodayTV();
+  //get a lsit of Popular TV
   Future<Either<TVFailure, List<Movie>>> getPopularTV();
-  //get a lsit of TopRated movies
+  //get a lsit of TopRated TV
   Future<Either<TVFailure, List<Movie>>> getTopRatedTV();
 }
