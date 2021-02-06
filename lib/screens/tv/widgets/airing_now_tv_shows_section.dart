@@ -57,8 +57,8 @@ class AiringNowTVShows extends StatelessWidget {
                 onPressed: () {
                   ExtendedNavigator.of(ctx).push(
                     Routes.listScreen,
-                    arguments:
-                        ListScreenArguments(type: typeOfList.popular_movies),
+                    arguments: ListScreenArguments(
+                        type: typeOfList.airing_now_tvshows),
                   );
                 },
                 color: Colors.white,

@@ -26,10 +26,10 @@ class ListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (type) {
-      case typeOfList.popular_movies:
-        return BlocProvider<PopularmoviesBloc>(
-          create: (context) => getIt<PopularmoviesBloc>()
-            ..add(PopularmoviesEvent.getPopularMovies()),
+      case typeOfList.top_rated_movies:
+        return BlocProvider<TopratedmoviesBloc>(
+          create: (context) => getIt<TopratedmoviesBloc>()
+            ..add(TopratedmoviesEvent.getTopRatedMovies()),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(
@@ -38,10 +38,10 @@ class ListScreen extends StatelessWidget {
           ),
         );
         break;
-      case typeOfList.top_rated_movies:
-        return BlocProvider<TopratedmoviesBloc>(
-          create: (context) => getIt<TopratedmoviesBloc>()
-            ..add(TopratedmoviesEvent.getTopRatedMovies()),
+      case typeOfList.popular_movies:
+        return BlocProvider<PopularmoviesBloc>(
+          create: (context) => getIt<PopularmoviesBloc>()
+            ..add(PopularmoviesEvent.getPopularMovies()),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(

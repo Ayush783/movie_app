@@ -58,7 +58,7 @@ class UpcomingMovies extends StatelessWidget {
                   ExtendedNavigator.of(ctx).push(
                     Routes.listScreen,
                     arguments:
-                        ListScreenArguments(type: typeOfList.popular_movies),
+                        ListScreenArguments(type: typeOfList.upcoming_movies),
                   );
                 },
                 color: Colors.white,

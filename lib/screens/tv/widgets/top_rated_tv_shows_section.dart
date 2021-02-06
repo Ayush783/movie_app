@@ -57,7 +57,7 @@ class TopRatedTVShows extends StatelessWidget {
                   ExtendedNavigator.of(ctx).push(
                     Routes.listScreen,
                     arguments:
-                        ListScreenArguments(type: typeOfList.popular_movies),
+                        ListScreenArguments(type: typeOfList.top_rated_tvshows),
                   );
                 },
                 color: Colors.white,
