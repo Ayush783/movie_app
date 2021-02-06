@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/movie/popular_movies_bloc/popularmovies_bloc.dart';
 import 'package:movie_app/entities/movies/movie.dart';
+import 'package:movie_app/routes/routes.gr.dart';
+import 'package:movie_app/screens/list_screen/list_of_movies_or_tv_shows_screen.dart';
 
 class MostPopularMovies extends StatelessWidget {
   @override
@@ -22,7 +25,7 @@ class MostPopularMovies extends StatelessWidget {
                 ))),
             loadedPopularMovies: (state) {
               final List<Movie> movies = state.movies;
-              return _buildBody(size, movies);
+              return _buildBody(size, movies, context);
             },
             popularMoviesError: (state) {
               return Text('Error');
@@ -35,7 +38,7 @@ class MostPopularMovies extends StatelessWidget {
     return 'https://image.tmdb.org/t/p/w500/${val}';
   }
 
-  Container _buildBody(Size size, List<Movie> movies) {
+  Container _buildBody(Size size, List<Movie> movies, BuildContext ctx) {
     return Container(
       margin: EdgeInsets.only(top: size.height / 40),
       padding: EdgeInsets.all(10),
@@ -51,7 +54,13 @@ class MostPopularMovies extends StatelessWidget {
               ),
               IconButton(
                 icon: Icon(Icons.arrow_forward_ios),
-                onPressed: () {},
+                onPressed: () {
+                  ExtendedNavigator.of(ctx).push(
+                    Routes.listScreen,
+                    arguments:
+                        ListScreenArguments(type: typeOfList.popular_movies),
+                  );
+                },
                 color: Colors.white,
               ),
             ],

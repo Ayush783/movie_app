@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/bloc/movie/now_playing_movies_bloc/nowplayingmovies_bloc.dart';
 import 'package:movie_app/bloc/movie/popular_movies_bloc/popularmovies_bloc.dart';
 import 'package:movie_app/bloc/movie/top_rated_movies_bloc/topratedmovies_bloc.dart';
 import 'package:movie_app/bloc/movie/upcoming_movies_bloc/upcomingmovies_bloc.dart';
@@ -12,8 +11,7 @@ import 'package:movie_app/bloc/tv/top_rated_tv_bloc/topratedtv_bloc.dart';
 import 'package:movie_app/entities/movies/movie.dart';
 import 'package:movie_app/entities/tv/tv.dart';
 import 'package:dartz/dartz.dart';
-
-import '../list_of_movies_or_tv_shows_screen.dart';
+import 'package:movie_app/screens/list_screen/list_of_movies_or_tv_shows_screen.dart';
 
 class ListBodyWidget extends StatelessWidget {
   final typeOfList type;
@@ -22,25 +20,11 @@ class ListBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return BlocBuilder(
-      builder: (context, state) {
-        if (state is NowplayingmoviesState) {
-          return state.map(
-              initial: (_) => Container(),
-              loadingNowPlayingMovies: (_) => Container(
-                  height: size.height / 3,
-                  child: Center(
-                      child: CircularProgressIndicator(
-                    backgroundColor: Color(0xffff0000),
-                  ))),
-              loadedNowPlayingMovies: (state) {
-                final List<Movie> movies = state.movies;
-                return _buildBody(size, left(movies));
-              },
-              nowPlayingMoviesError: (state) {
-                return Text('Error');
-              });
-        } else if (state is PopularmoviesState) {
+    final bloc = BlocProvider.of<PopularmoviesBloc>(context);
+    switch (type) {
+      case typeOfList.popular_movies:
+        return BlocBuilder<PopularmoviesBloc, PopularmoviesState>(
+            builder: (ctx, state) {
           return state.map(
               initial: (_) => Container(),
               loadingPopularMovies: (_) => Container(
@@ -56,7 +40,11 @@ class ListBodyWidget extends StatelessWidget {
               popularMoviesError: (state) {
                 return Text('Error');
               });
-        } else if (state is TopratedmoviesState) {
+        });
+        break;
+      case typeOfList.top_rated_movies:
+        return BlocBuilder<TopratedmoviesBloc, TopratedmoviesState>(
+            builder: (ctx, state) {
           return state.map(
               initial: (_) => Container(),
               loadingTopRatedMovies: (_) => Container(
@@ -72,7 +60,11 @@ class ListBodyWidget extends StatelessWidget {
               topRatedMoviesError: (state) {
                 return Text('Error');
               });
-        } else if (state is UpcomingmoviesState) {
+        });
+        break;
+      case typeOfList.upcoming_movies:
+        return BlocBuilder<UpcomingmoviesBloc, UpcomingmoviesState>(
+            builder: (ctx, state) {
           return state.map(
               initial: (_) => Container(),
               loadingUpcomingMovies: (_) => Container(
@@ -88,7 +80,11 @@ class ListBodyWidget extends StatelessWidget {
               upcomingMoviesError: (state) {
                 return Text('Error');
               });
-        } else if (state is AiringnowtvState) {
+        });
+        break;
+      case typeOfList.airing_now_tvshows:
+        return BlocBuilder<AiringnowtvBloc, AiringnowtvState>(
+            builder: (ctx, state) {
           return state.map(
               initial: (_) => Container(),
               loading: (_) => Container(
@@ -104,7 +100,11 @@ class ListBodyWidget extends StatelessWidget {
               error: (state) {
                 return Text('Error');
               });
-        } else if (state is AirtodaytvState) {
+        });
+        break;
+      case typeOfList.airing_today_tvshows:
+        return BlocBuilder<AirtodaytvBloc, AirtodaytvState>(
+            builder: (ctx, state) {
           return state.map(
               initial: (_) => Container(),
               loading: (_) => Container(
@@ -120,7 +120,11 @@ class ListBodyWidget extends StatelessWidget {
               error: (state) {
                 return Text('Error');
               });
-        } else if (state is PopulartvState) {
+        });
+        break;
+      case typeOfList.popular_tvshows:
+        return BlocBuilder<PopulartvBloc, PopulartvState>(
+            builder: (ctx, state) {
           return state.map(
               initial: (_) => Container(),
               loading: (_) => Container(
@@ -136,7 +140,11 @@ class ListBodyWidget extends StatelessWidget {
               error: (state) {
                 return Text('Error');
               });
-        } else if (state is TopratedtvState) {
+        });
+        break;
+      case typeOfList.top_rated_tvshows:
+        return BlocBuilder<TopratedtvBloc, TopratedtvState>(
+            builder: (ctx, state) {
           return state.map(
               initial: (_) => Container(),
               loading: (_) => Container(
@@ -152,15 +160,11 @@ class ListBodyWidget extends StatelessWidget {
               error: (state) {
                 return Text('Error');
               });
-        } else {
-          return Container(
-            child: Center(
-              child: Text("Something went horribly wrong!!!"),
-            ),
-          );
-        }
-      },
-    );
+        });
+        break;
+      default:
+        return Container();
+    }
   }
 
   String posterUrl(String val) {
