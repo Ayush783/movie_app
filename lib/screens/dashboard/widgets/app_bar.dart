@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 AppBar appbarWidget(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
     title: Container(
       width: MediaQuery.of(context).size.width / 3,
       padding: EdgeInsets.all(4),

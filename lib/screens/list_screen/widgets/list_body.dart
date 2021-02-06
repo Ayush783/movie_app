@@ -5,7 +5,6 @@ import 'package:movie_app/bloc/movie/popular_movies_bloc/popularmovies_bloc.dart
 import 'package:movie_app/bloc/movie/top_rated_movies_bloc/topratedmovies_bloc.dart';
 import 'package:movie_app/bloc/movie/upcoming_movies_bloc/upcomingmovies_bloc.dart';
 import 'package:movie_app/bloc/tv/airing_now_bloc/airingnowtv_bloc.dart';
-import 'package:movie_app/bloc/tv/airing_today_bloc/airtodaytv_bloc.dart';
 import 'package:movie_app/bloc/tv/popular_tv_bloc/populartv_bloc.dart';
 import 'package:movie_app/bloc/tv/top_rated_tv_bloc/topratedtv_bloc.dart';
 import 'package:movie_app/entities/movies/movie.dart';
@@ -20,7 +19,6 @@ class ListBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final bloc = BlocProvider.of<PopularmoviesBloc>(context);
     switch (type) {
       case typeOfList.popular_movies:
         return BlocBuilder<PopularmoviesBloc, PopularmoviesState>(
@@ -102,26 +100,6 @@ class ListBodyWidget extends StatelessWidget {
               });
         });
         break;
-      case typeOfList.airing_today_tvshows:
-        return BlocBuilder<AirtodaytvBloc, AirtodaytvState>(
-            builder: (ctx, state) {
-          return state.map(
-              initial: (_) => Container(),
-              loading: (_) => Container(
-                  height: size.height / 3,
-                  child: Center(
-                      child: CircularProgressIndicator(
-                    backgroundColor: Color(0xffff0000),
-                  ))),
-              loaded: (state) {
-                final List<TV> shows = state.shows;
-                return _buildBody(size, right(shows));
-              },
-              error: (state) {
-                return Text('Error');
-              });
-        });
-        break;
       case typeOfList.popular_tvshows:
         return BlocBuilder<PopulartvBloc, PopulartvState>(
             builder: (ctx, state) {
@@ -176,6 +154,8 @@ class ListBodyWidget extends StatelessWidget {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
+        childAspectRatio: 0.67,
+        mainAxisSpacing: 20,
       ),
       itemCount: list.length,
       itemBuilder: (context, index) {
@@ -183,7 +163,7 @@ class ListBodyWidget extends StatelessWidget {
           elevation: 20,
           color: Colors.transparent,
           child: Container(
-            margin: EdgeInsets.only(right: 20),
+            margin: EdgeInsets.only(right: 10, left: 10),
             width: size.width / 3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -193,7 +173,7 @@ class ListBodyWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: size.height / 5,
+                  height: size.height / 4,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),

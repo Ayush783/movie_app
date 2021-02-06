@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/bloc/movie/top_rated_movies_bloc/topratedmovies_bloc.dart';
 import 'package:movie_app/entities/movies/movie.dart';
+import 'package:movie_app/routes/routes.gr.dart';
 
 class TopRatedMovies extends StatelessWidget {
   @override
@@ -22,7 +24,7 @@ class TopRatedMovies extends StatelessWidget {
                 ))),
             loadedTopRatedMovies: (state) {
               final List<Movie> movies = state.movies;
-              return _buildBody(size, movies);
+              return _buildBody(size, movies, context);
             },
             topRatedMoviesError: (state) {
               return Text('Error');
@@ -35,7 +37,7 @@ class TopRatedMovies extends StatelessWidget {
     return 'https://image.tmdb.org/t/p/w500/${val}';
   }
 
-  Container _buildBody(Size size, List<Movie> movies) {
+  Container _buildBody(Size size, List<Movie> movies, BuildContext ctx) {
     return Container(
       margin: EdgeInsets.only(top: size.height / 40),
       padding: EdgeInsets.all(10),
@@ -51,7 +53,14 @@ class TopRatedMovies extends StatelessWidget {
               ),
               IconButton(
                 icon: Icon(Icons.arrow_forward_ios),
-                onPressed: () {},
+                onPressed: () {
+                  var typeOfList;
+                  ExtendedNavigator.of(ctx).push(
+                    Routes.listScreen,
+                    arguments:
+                        ListScreenArguments(type: typeOfList.popular_movies),
+                  );
+                },
                 color: Colors.white,
               ),
             ],

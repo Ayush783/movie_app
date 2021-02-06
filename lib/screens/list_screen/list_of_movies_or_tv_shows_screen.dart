@@ -4,7 +4,6 @@ import 'package:movie_app/bloc/movie/popular_movies_bloc/popularmovies_bloc.dart
 import 'package:movie_app/bloc/movie/top_rated_movies_bloc/topratedmovies_bloc.dart';
 import 'package:movie_app/bloc/movie/upcoming_movies_bloc/upcomingmovies_bloc.dart';
 import 'package:movie_app/bloc/tv/airing_now_bloc/airingnowtv_bloc.dart';
-import 'package:movie_app/bloc/tv/airing_today_bloc/airtodaytv_bloc.dart';
 import 'package:movie_app/bloc/tv/popular_tv_bloc/populartv_bloc.dart';
 import 'package:movie_app/bloc/tv/top_rated_tv_bloc/topratedtv_bloc.dart';
 import 'package:movie_app/injection.dart';
@@ -15,7 +14,6 @@ enum typeOfList {
   popular_movies,
   top_rated_movies,
   upcoming_movies,
-  airing_today_tvshows,
   airing_now_tvshows,
   popular_tvshows,
   top_rated_tvshows,
@@ -68,18 +66,6 @@ class ListScreen extends StatelessWidget {
         return BlocProvider<AiringnowtvBloc>(
           create: (context) =>
               getIt<AiringnowtvBloc>()..add(AiringnowtvEvent.getTVshows()),
-          child: Scaffold(
-            appBar: appbarWidget(context),
-            body: ListBodyWidget(
-              type: type,
-            ),
-          ),
-        );
-        break;
-      case typeOfList.airing_today_tvshows:
-        return BlocProvider<AirtodaytvBloc>(
-          create: (context) =>
-              getIt<AirtodaytvBloc>()..add(AirtodaytvEvent.getTVshows()),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(
