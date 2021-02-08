@@ -22,7 +22,8 @@ class PopularmoviesBloc extends Bloc<PopularmoviesEvent, PopularmoviesState> {
     PopularmoviesEvent event,
   ) async* {
     yield PopularmoviesState.loadingPopularMovies();
-    final moviesOrFailure = await _tmdbApiFacade.getPopularMovies();
+    final moviesOrFailure =
+        await _tmdbApiFacade.getPopularMovies(page: event.page);
     yield moviesOrFailure.fold(
         (f) => PopularmoviesState.popularMoviesError(failure: f),
         (r) => PopularmoviesState.loadedPopularMovies(movies: r));

@@ -14,8 +14,10 @@ class _$NowplayingmoviesEventTearOff {
   const _$NowplayingmoviesEventTearOff();
 
 // ignore: unused_element
-  _GetNowPlayingMovies getNowPlayingMovies() {
-    return const _GetNowPlayingMovies();
+  _GetNowPlayingMovies getNowPlayingMovies({@required int page}) {
+    return _GetNowPlayingMovies(
+      page: page,
+    );
   }
 }
 
@@ -25,13 +27,15 @@ const $NowplayingmoviesEvent = _$NowplayingmoviesEventTearOff();
 
 /// @nodoc
 mixin _$NowplayingmoviesEvent {
+  int get page;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getNowPlayingMovies(),
+    @required TResult getNowPlayingMovies(int page),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getNowPlayingMovies(),
+    TResult getNowPlayingMovies(int page),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -43,6 +47,8 @@ mixin _$NowplayingmoviesEvent {
     TResult getNowPlayingMovies(_GetNowPlayingMovies value),
     @required TResult orElse(),
   });
+
+  $NowplayingmoviesEventCopyWith<NowplayingmoviesEvent> get copyWith;
 }
 
 /// @nodoc
@@ -50,6 +56,7 @@ abstract class $NowplayingmoviesEventCopyWith<$Res> {
   factory $NowplayingmoviesEventCopyWith(NowplayingmoviesEvent value,
           $Res Function(NowplayingmoviesEvent) then) =
       _$NowplayingmoviesEventCopyWithImpl<$Res>;
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -60,13 +67,25 @@ class _$NowplayingmoviesEventCopyWithImpl<$Res>
   final NowplayingmoviesEvent _value;
   // ignore: unused_field
   final $Res Function(NowplayingmoviesEvent) _then;
+
+  @override
+  $Res call({
+    Object page = freezed,
+  }) {
+    return _then(_value.copyWith(
+      page: page == freezed ? _value.page : page as int,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$GetNowPlayingMoviesCopyWith<$Res> {
+abstract class _$GetNowPlayingMoviesCopyWith<$Res>
+    implements $NowplayingmoviesEventCopyWith<$Res> {
   factory _$GetNowPlayingMoviesCopyWith(_GetNowPlayingMovies value,
           $Res Function(_GetNowPlayingMovies) then) =
       __$GetNowPlayingMoviesCopyWithImpl<$Res>;
+  @override
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -79,43 +98,64 @@ class __$GetNowPlayingMoviesCopyWithImpl<$Res>
 
   @override
   _GetNowPlayingMovies get _value => super._value as _GetNowPlayingMovies;
+
+  @override
+  $Res call({
+    Object page = freezed,
+  }) {
+    return _then(_GetNowPlayingMovies(
+      page: page == freezed ? _value.page : page as int,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_GetNowPlayingMovies implements _GetNowPlayingMovies {
-  const _$_GetNowPlayingMovies();
+  const _$_GetNowPlayingMovies({@required this.page}) : assert(page != null);
+
+  @override
+  final int page;
 
   @override
   String toString() {
-    return 'NowplayingmoviesEvent.getNowPlayingMovies()';
+    return 'NowplayingmoviesEvent.getNowPlayingMovies(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _GetNowPlayingMovies);
+    return identical(this, other) ||
+        (other is _GetNowPlayingMovies &&
+            (identical(other.page, page) ||
+                const DeepCollectionEquality().equals(other.page, page)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(page);
+
+  @override
+  _$GetNowPlayingMoviesCopyWith<_GetNowPlayingMovies> get copyWith =>
+      __$GetNowPlayingMoviesCopyWithImpl<_GetNowPlayingMovies>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getNowPlayingMovies(),
+    @required TResult getNowPlayingMovies(int page),
   }) {
     assert(getNowPlayingMovies != null);
-    return getNowPlayingMovies();
+    return getNowPlayingMovies(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getNowPlayingMovies(),
+    TResult getNowPlayingMovies(int page),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (getNowPlayingMovies != null) {
-      return getNowPlayingMovies();
+      return getNowPlayingMovies(page);
     }
     return orElse();
   }
@@ -144,7 +184,13 @@ class _$_GetNowPlayingMovies implements _GetNowPlayingMovies {
 }
 
 abstract class _GetNowPlayingMovies implements NowplayingmoviesEvent {
-  const factory _GetNowPlayingMovies() = _$_GetNowPlayingMovies;
+  const factory _GetNowPlayingMovies({@required int page}) =
+      _$_GetNowPlayingMovies;
+
+  @override
+  int get page;
+  @override
+  _$GetNowPlayingMoviesCopyWith<_GetNowPlayingMovies> get copyWith;
 }
 
 /// @nodoc

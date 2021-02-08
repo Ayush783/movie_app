@@ -22,7 +22,7 @@ class TopratedtvBloc extends Bloc<TopratedtvEvent, TopratedtvState> {
     TopratedtvEvent event,
   ) async* {
     yield TopratedtvState.loading();
-    final tvOrFailure = await _tmdbApiFacade.getTopRatedTV();
+    final tvOrFailure = await _tmdbApiFacade.getTopRatedTV(page: event.page);
     yield tvOrFailure.fold((f) => TopratedtvState.error(failure: f),
         (r) => TopratedtvState.loaded(shows: r));
   }

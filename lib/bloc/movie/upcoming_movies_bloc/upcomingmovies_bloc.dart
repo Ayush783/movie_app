@@ -23,7 +23,7 @@ class UpcomingmoviesBloc
     UpcomingmoviesEvent event,
   ) async* {
     yield UpcomingmoviesState.loadingUpcomingMovies();
-    final moviesOrFailure = await _tmdbApiFacade.getUpcomingMovies();
+    final moviesOrFailure = await _tmdbApiFacade.getUpcomingMovies(page: event.page);
     yield moviesOrFailure.fold(
         (f) => UpcomingmoviesState.upcomingMoviesError(failure: f),
         (r) => UpcomingmoviesState.loadedUpcomingMovies(movies: r));

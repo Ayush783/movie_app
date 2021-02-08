@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:devicelocale/devicelocale.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:movie_app/entities/movies/movie.dart';
@@ -14,10 +15,11 @@ import 'package:movie_app/repository/Api/api_constants.dart';
 @LazySingleton(as: TMDBApiFacade)
 class TMDBApi implements TMDBApiFacade {
   @override
-  Future<Either<MovieFailure, List<Movie>>> getNowPlayingMovies() async {
+  Future<Either<MovieFailure, List<Movie>>> getNowPlayingMovies(
+      {@required int page}) async {
     final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/now_playing?api_key=$apiKey&region=${locale.countryCode}',
+      '$baseUrl$movieUrls/now_playing?api_key=$apiKey&region=${locale.countryCode}&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
@@ -35,9 +37,10 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<TV>>> getOnTheAirTV() async {
+  Future<Either<TVFailure, List<TV>>> getOnTheAirTV(
+      {@required int page}) async {
     final response = await http.get(
-      '$baseUrl$tvUrls/on_the_air?api_key=$apiKey',
+      '$baseUrl$tvUrls/on_the_air?api_key=$apiKey&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
@@ -55,10 +58,11 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<MovieFailure, List<Movie>>> getPopularMovies() async {
+  Future<Either<MovieFailure, List<Movie>>> getPopularMovies(
+      {@required int page}) async {
     final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/popular?api_key=$apiKey&region=${locale.countryCode}',
+      '$baseUrl$movieUrls/popular?api_key=$apiKey&region=${locale.countryCode}&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
@@ -76,9 +80,9 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<TV>>> getPopularTV() async {
+  Future<Either<TVFailure, List<TV>>> getPopularTV({@required int page}) async {
     final response = await http.get(
-      '$baseUrl$tvUrls/popular?api_key=$apiKey',
+      '$baseUrl$tvUrls/popular?api_key=$apiKey&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
@@ -96,10 +100,11 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<MovieFailure, List<Movie>>> getTopRatedMovies() async {
+  Future<Either<MovieFailure, List<Movie>>> getTopRatedMovies(
+      {@required int page}) async {
     final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/top_rated?api_key=$apiKey&region=${locale.countryCode}',
+      '$baseUrl$movieUrls/top_rated?api_key=$apiKey&region=${locale.countryCode}&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
@@ -117,9 +122,10 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<TV>>> getTopRatedTV() async {
+  Future<Either<TVFailure, List<TV>>> getTopRatedTV(
+      {@required int page}) async {
     final response = await http.get(
-      '$baseUrl$tvUrls/top_rated?api_key=$apiKey',
+      '$baseUrl$tvUrls/top_rated?api_key=$apiKey&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
@@ -137,10 +143,11 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<MovieFailure, List<Movie>>> getUpcomingMovies() async {
+  Future<Either<MovieFailure, List<Movie>>> getUpcomingMovies(
+      {@required int page}) async {
     final locale = await Devicelocale.currentAsLocale;
     final response = await http.get(
-      '$baseUrl$movieUrls/upcoming?api_key=$apiKey&region=${locale.countryCode}',
+      '$baseUrl$movieUrls/upcoming?api_key=$apiKey&region=${locale.countryCode}&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =
@@ -158,9 +165,10 @@ class TMDBApi implements TMDBApiFacade {
   }
 
   @override
-  Future<Either<TVFailure, List<TV>>> getAiringTodayTV() async {
+  Future<Either<TVFailure, List<TV>>> getAiringTodayTV(
+      {@required int page}) async {
     final response = await http.get(
-      '$baseUrl$tvUrls/airing_today?api_key=$apiKey',
+      '$baseUrl$tvUrls/airing_today?api_key=$apiKey&page=$page',
     );
     if (response.statusCode == 200) {
       final List<Map<String, dynamic>> results =

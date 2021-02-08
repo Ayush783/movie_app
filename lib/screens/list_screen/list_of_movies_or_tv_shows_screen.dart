@@ -29,7 +29,7 @@ class ListScreen extends StatelessWidget {
       case typeOfList.top_rated_movies:
         return BlocProvider<TopratedmoviesBloc>(
           create: (context) => getIt<TopratedmoviesBloc>()
-            ..add(TopratedmoviesEvent.getTopRatedMovies()),
+            ..add(TopratedmoviesEvent.getTopRatedMovies(page: 1)),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(
@@ -41,7 +41,7 @@ class ListScreen extends StatelessWidget {
       case typeOfList.popular_movies:
         return BlocProvider<PopularmoviesBloc>(
           create: (context) => getIt<PopularmoviesBloc>()
-            ..add(PopularmoviesEvent.getPopularMovies()),
+            ..add(PopularmoviesEvent.getPopularMovies(page: 1)),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(
@@ -53,7 +53,7 @@ class ListScreen extends StatelessWidget {
       case typeOfList.upcoming_movies:
         return BlocProvider<UpcomingmoviesBloc>(
           create: (context) => getIt<UpcomingmoviesBloc>()
-            ..add(UpcomingmoviesEvent.getUpcomingMovies()),
+            ..add(UpcomingmoviesEvent.getUpcomingMovies(page: 1)),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(
@@ -64,8 +64,8 @@ class ListScreen extends StatelessWidget {
         break;
       case typeOfList.airing_now_tvshows:
         return BlocProvider<AiringnowtvBloc>(
-          create: (context) =>
-              getIt<AiringnowtvBloc>()..add(AiringnowtvEvent.getTVshows()),
+          create: (context) => getIt<AiringnowtvBloc>()
+            ..add(AiringnowtvEvent.getTVshows(page: 1)),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(
@@ -77,7 +77,7 @@ class ListScreen extends StatelessWidget {
       case typeOfList.popular_tvshows:
         return BlocProvider<PopulartvBloc>(
           create: (context) =>
-              getIt<PopulartvBloc>()..add(PopulartvEvent.getTVshows()),
+              getIt<PopulartvBloc>()..add(PopulartvEvent.getTVshows(page: 1)),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(
@@ -89,7 +89,7 @@ class ListScreen extends StatelessWidget {
       case typeOfList.top_rated_tvshows:
         return BlocProvider<TopratedtvBloc>(
           create: (context) =>
-              getIt<TopratedtvBloc>()..add(TopratedtvEvent.getTVshows()),
+              getIt<TopratedtvBloc>()..add(TopratedtvEvent.getTVshows(page: 1)),
           child: Scaffold(
             appBar: appbarWidget(context),
             body: ListBodyWidget(

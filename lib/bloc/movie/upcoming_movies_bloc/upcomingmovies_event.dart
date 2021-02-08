@@ -2,5 +2,6 @@ part of 'upcomingmovies_bloc.dart';
 
 @freezed
 abstract class UpcomingmoviesEvent with _$UpcomingmoviesEvent {
-  const factory UpcomingmoviesEvent.getUpcomingMovies() = _Started;
+  const factory UpcomingmoviesEvent.getUpcomingMovies({@required int page}) =
+      _Started;
 }

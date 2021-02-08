@@ -14,8 +14,10 @@ class _$PopulartvEventTearOff {
   const _$PopulartvEventTearOff();
 
 // ignore: unused_element
-  _GetTVshows getTVshows() {
-    return const _GetTVshows();
+  _GetTVshows getTVshows({@required int page}) {
+    return _GetTVshows(
+      page: page,
+    );
   }
 }
 
@@ -25,13 +27,15 @@ const $PopulartvEvent = _$PopulartvEventTearOff();
 
 /// @nodoc
 mixin _$PopulartvEvent {
+  int get page;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getTVshows(),
+    @required TResult getTVshows(int page),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getTVshows(),
+    TResult getTVshows(int page),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -43,6 +47,8 @@ mixin _$PopulartvEvent {
     TResult getTVshows(_GetTVshows value),
     @required TResult orElse(),
   });
+
+  $PopulartvEventCopyWith<PopulartvEvent> get copyWith;
 }
 
 /// @nodoc
@@ -50,6 +56,7 @@ abstract class $PopulartvEventCopyWith<$Res> {
   factory $PopulartvEventCopyWith(
           PopulartvEvent value, $Res Function(PopulartvEvent) then) =
       _$PopulartvEventCopyWithImpl<$Res>;
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -60,13 +67,25 @@ class _$PopulartvEventCopyWithImpl<$Res>
   final PopulartvEvent _value;
   // ignore: unused_field
   final $Res Function(PopulartvEvent) _then;
+
+  @override
+  $Res call({
+    Object page = freezed,
+  }) {
+    return _then(_value.copyWith(
+      page: page == freezed ? _value.page : page as int,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$GetTVshowsCopyWith<$Res> {
+abstract class _$GetTVshowsCopyWith<$Res>
+    implements $PopulartvEventCopyWith<$Res> {
   factory _$GetTVshowsCopyWith(
           _GetTVshows value, $Res Function(_GetTVshows) then) =
       __$GetTVshowsCopyWithImpl<$Res>;
+  @override
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -78,43 +97,63 @@ class __$GetTVshowsCopyWithImpl<$Res> extends _$PopulartvEventCopyWithImpl<$Res>
 
   @override
   _GetTVshows get _value => super._value as _GetTVshows;
+
+  @override
+  $Res call({
+    Object page = freezed,
+  }) {
+    return _then(_GetTVshows(
+      page: page == freezed ? _value.page : page as int,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_GetTVshows implements _GetTVshows {
-  const _$_GetTVshows();
+  const _$_GetTVshows({@required this.page}) : assert(page != null);
+
+  @override
+  final int page;
 
   @override
   String toString() {
-    return 'PopulartvEvent.getTVshows()';
+    return 'PopulartvEvent.getTVshows(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _GetTVshows);
+    return identical(this, other) ||
+        (other is _GetTVshows &&
+            (identical(other.page, page) ||
+                const DeepCollectionEquality().equals(other.page, page)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(page);
+
+  @override
+  _$GetTVshowsCopyWith<_GetTVshows> get copyWith =>
+      __$GetTVshowsCopyWithImpl<_GetTVshows>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getTVshows(),
+    @required TResult getTVshows(int page),
   }) {
     assert(getTVshows != null);
-    return getTVshows();
+    return getTVshows(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getTVshows(),
+    TResult getTVshows(int page),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (getTVshows != null) {
-      return getTVshows();
+      return getTVshows(page);
     }
     return orElse();
   }
@@ -143,7 +182,12 @@ class _$_GetTVshows implements _GetTVshows {
 }
 
 abstract class _GetTVshows implements PopulartvEvent {
-  const factory _GetTVshows() = _$_GetTVshows;
+  const factory _GetTVshows({@required int page}) = _$_GetTVshows;
+
+  @override
+  int get page;
+  @override
+  _$GetTVshowsCopyWith<_GetTVshows> get copyWith;
 }
 
 /// @nodoc

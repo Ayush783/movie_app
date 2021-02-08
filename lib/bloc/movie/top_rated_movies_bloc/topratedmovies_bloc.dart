@@ -23,7 +23,7 @@ class TopratedmoviesBloc
     TopratedmoviesEvent event,
   ) async* {
     yield TopratedmoviesState.loadingTopRatedMovies();
-    final moviesOrFailure = await _tmdbApiFacade.getTopRatedMovies();
+    final moviesOrFailure = await _tmdbApiFacade.getTopRatedMovies(page: event.page);
     yield moviesOrFailure.fold(
         (f) => TopratedmoviesState.topRatedMoviesError(failure: f),
         (r) => TopratedmoviesState.loadedTopRatedMovies(movies: r));

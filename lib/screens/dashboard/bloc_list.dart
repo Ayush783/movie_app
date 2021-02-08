@@ -13,41 +13,41 @@ List<BlocProvider> blocProviders = [
   BlocProvider<NowplayingmoviesBloc>(
       create: (context) => getIt<NowplayingmoviesBloc>()
         ..add(
-          NowplayingmoviesEvent.getNowPlayingMovies(),
+          NowplayingmoviesEvent.getNowPlayingMovies(page: 1),
         )),
   BlocProvider<PopularmoviesBloc>(
       create: (context) => getIt<PopularmoviesBloc>()
         ..add(
-          PopularmoviesEvent.getPopularMovies(),
+          PopularmoviesEvent.getPopularMovies(page: 1),
         )),
   BlocProvider<TopratedmoviesBloc>(
       create: (context) => getIt<TopratedmoviesBloc>()
         ..add(
-          TopratedmoviesEvent.getTopRatedMovies(),
+          TopratedmoviesEvent.getTopRatedMovies(page: 1),
         )),
   BlocProvider<UpcomingmoviesBloc>(
       create: (context) => getIt<UpcomingmoviesBloc>()
         ..add(
-          UpcomingmoviesEvent.getUpcomingMovies(),
+          UpcomingmoviesEvent.getUpcomingMovies(page: 1),
         )),
   BlocProvider<AiringnowtvBloc>(
       create: (context) => getIt<AiringnowtvBloc>()
         ..add(
-          AiringnowtvEvent.getTVshows(),
+          AiringnowtvEvent.getTVshows(page: 1),
         )),
   BlocProvider<AirtodaytvBloc>(
       create: (context) => getIt<AirtodaytvBloc>()
         ..add(
-          AirtodaytvEvent.getTVshows(),
+          AirtodaytvEvent.getTVshows(page: 1),
         )),
   BlocProvider<PopulartvBloc>(
       create: (context) => getIt<PopulartvBloc>()
         ..add(
-          PopulartvEvent.getTVshows(),
+          PopulartvEvent.getTVshows(page: 1),
         )),
   BlocProvider<TopratedtvBloc>(
       create: (context) => getIt<TopratedtvBloc>()
         ..add(
-          TopratedtvEvent.getTVshows(),
+          TopratedtvEvent.getTVshows(page: 1),
         )),
 ];

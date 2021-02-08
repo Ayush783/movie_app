@@ -22,7 +22,7 @@ class AiringnowtvBloc extends Bloc<AiringnowtvEvent, AiringnowtvState> {
     AiringnowtvEvent event,
   ) async* {
     yield AiringnowtvState.loading();
-    final moviesOrFailure = await _tmdbApiFacade.getOnTheAirTV();
+    final moviesOrFailure = await _tmdbApiFacade.getOnTheAirTV(page: event.page);
     yield moviesOrFailure.fold((f) => AiringnowtvState.error(failure: f),
         (r) => AiringnowtvState.loaded(shows: r));
   }

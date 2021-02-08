@@ -14,8 +14,10 @@ class _$TopratedmoviesEventTearOff {
   const _$TopratedmoviesEventTearOff();
 
 // ignore: unused_element
-  _Started getTopRatedMovies() {
-    return const _Started();
+  _Started getTopRatedMovies({@required int page}) {
+    return _Started(
+      page: page,
+    );
   }
 }
 
@@ -25,13 +27,15 @@ const $TopratedmoviesEvent = _$TopratedmoviesEventTearOff();
 
 /// @nodoc
 mixin _$TopratedmoviesEvent {
+  int get page;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getTopRatedMovies(),
+    @required TResult getTopRatedMovies(int page),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getTopRatedMovies(),
+    TResult getTopRatedMovies(int page),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -43,6 +47,8 @@ mixin _$TopratedmoviesEvent {
     TResult getTopRatedMovies(_Started value),
     @required TResult orElse(),
   });
+
+  $TopratedmoviesEventCopyWith<TopratedmoviesEvent> get copyWith;
 }
 
 /// @nodoc
@@ -50,6 +56,7 @@ abstract class $TopratedmoviesEventCopyWith<$Res> {
   factory $TopratedmoviesEventCopyWith(
           TopratedmoviesEvent value, $Res Function(TopratedmoviesEvent) then) =
       _$TopratedmoviesEventCopyWithImpl<$Res>;
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -60,12 +67,24 @@ class _$TopratedmoviesEventCopyWithImpl<$Res>
   final TopratedmoviesEvent _value;
   // ignore: unused_field
   final $Res Function(TopratedmoviesEvent) _then;
+
+  @override
+  $Res call({
+    Object page = freezed,
+  }) {
+    return _then(_value.copyWith(
+      page: page == freezed ? _value.page : page as int,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
+abstract class _$StartedCopyWith<$Res>
+    implements $TopratedmoviesEventCopyWith<$Res> {
   factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
       __$StartedCopyWithImpl<$Res>;
+  @override
+  $Res call({int page});
 }
 
 /// @nodoc
@@ -77,43 +96,63 @@ class __$StartedCopyWithImpl<$Res>
 
   @override
   _Started get _value => super._value as _Started;
+
+  @override
+  $Res call({
+    Object page = freezed,
+  }) {
+    return _then(_Started(
+      page: page == freezed ? _value.page : page as int,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_Started implements _Started {
-  const _$_Started();
+  const _$_Started({@required this.page}) : assert(page != null);
+
+  @override
+  final int page;
 
   @override
   String toString() {
-    return 'TopratedmoviesEvent.getTopRatedMovies()';
+    return 'TopratedmoviesEvent.getTopRatedMovies(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other is _Started &&
+            (identical(other.page, page) ||
+                const DeepCollectionEquality().equals(other.page, page)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(page);
+
+  @override
+  _$StartedCopyWith<_Started> get copyWith =>
+      __$StartedCopyWithImpl<_Started>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult getTopRatedMovies(),
+    @required TResult getTopRatedMovies(int page),
   }) {
     assert(getTopRatedMovies != null);
-    return getTopRatedMovies();
+    return getTopRatedMovies(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult getTopRatedMovies(),
+    TResult getTopRatedMovies(int page),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (getTopRatedMovies != null) {
-      return getTopRatedMovies();
+      return getTopRatedMovies(page);
     }
     return orElse();
   }
@@ -142,7 +181,12 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements TopratedmoviesEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started({@required int page}) = _$_Started;
+
+  @override
+  int get page;
+  @override
+  _$StartedCopyWith<_Started> get copyWith;
 }
 
 /// @nodoc

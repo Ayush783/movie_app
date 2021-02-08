@@ -23,7 +23,8 @@ class NowplayingmoviesBloc
     NowplayingmoviesEvent event,
   ) async* {
     yield NowplayingmoviesState.loadingNowPlayingMovies();
-    final moviesOrFailure = await _tmdbApiFacade.getNowPlayingMovies();
+    final moviesOrFailure =
+        await _tmdbApiFacade.getNowPlayingMovies(page: event.page);
     yield moviesOrFailure.fold(
         (f) => NowplayingmoviesState.nowPlayingMoviesError(failure: f),
         (r) => NowplayingmoviesState.loadedNowPlayingMovies(movies: r));
