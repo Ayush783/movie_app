@@ -122,7 +122,7 @@ class Carousel extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        for (int i = 0; i < 10; i++)
+                        for (int i = 1000; i < 1010; i++)
                           GestureDetector(
                             onTap: () {
                               _controller.animateToPage(i,
@@ -133,7 +133,7 @@ class Carousel extends StatelessWidget {
                               height: 18,
                               width: 18,
                               decoration: BoxDecoration(
-                                color: _index.value == i
+                                color: _index.value == i % 1000
                                     ? Colors.red
                                     : Colors.black,
                                 shape: BoxShape.circle,

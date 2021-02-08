@@ -133,7 +133,7 @@ class Carousel extends StatelessWidget {
                               height: 18,
                               width: 18,
                               decoration: BoxDecoration(
-                                color: _index.value == i
+                                color: _index.value == i % 1000
                                     ? Colors.red
                                     : Colors.black,
                                 shape: BoxShape.circle,
